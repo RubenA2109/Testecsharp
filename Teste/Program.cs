@@ -1,26 +1,38 @@
 var builder = WebApplication.CreateBuilder(args);
 
+
 // Add services to the container.
+
 builder.Services.AddRazorPages();
 
-var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+/** pedaço de codigo inicio */
+
+//builder.Services.AddHttpClient();
+
+builder.Services.AddHttpClient("RestCountries", c =>
+
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
 
-app.UseHttpsRedirection();
+    c.BaseAddress = new Uri("https://restcountries.com/");
 
-app.UseRouting();
+})
 
-app.UseAuthorization();
+.ConfigurePrimaryHttpMessageHandler(() =>
 
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+{
 
-app.Run();
+    return new HttpClientHandler
+
+    {
+
+        SslProtocols = System.Security.Authentication.SslProtocols.Tls12
+
+    };
+
+});
+
+/** pedaço de codigo fim*/
+
+
+var app = builder.Build();
