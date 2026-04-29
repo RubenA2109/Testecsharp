@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Testecsharp.Models;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using System.Collections.Generic;
+using Testecsharp.Models;
 
 namespace Testecsharp.Pages;
 
@@ -36,16 +37,15 @@ public class IndexModel : PageModel
             var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
             var dados = JsonSerializer.Deserialize<List<CountryApiResponse>>(json, options);
 
-
-            Paises = dados.Select(d => new Pais
-
+            if (dados != null)
             {
-
-                OfficialName = d.name?.official,
-                Cca2 = d.cca2,
-                FlagUrl = d.flags?.png
-
-            }).ToList();
+                Paises = dados.Select(d => new Pais
+                {
+                    OfficialName = d.name?.official ?? string.Empty,
+                    Cca2 = d.cca2 ?? string.Empty,
+                    FlagUrl = d.flags?.png ?? string.Empty
+                }).ToList();
+            }
 
         }
 

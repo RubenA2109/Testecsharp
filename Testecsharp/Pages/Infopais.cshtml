@@ -1,0 +1,12 @@
+@page
+@model InfopaisModel
+@{
+    ViewData["Title"] = "Info do País";
+}
+
+<h1>@Model.InfoPais.OfficialName</h1>
+<p><strong>Codigo do Pais:</strong> @Model.CodigoPais</p>
+@if (!string.IsNullOrEmpty(Model.InfoPais.FlagUrl))
+{
+    <img src="@Model.InfoPais.FlagUrl" alt="Bandeira de @Model.InfoPais.OfficialName" style="width:100%;" />
+}
