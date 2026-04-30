@@ -39,13 +39,18 @@ public class InfopaisModel : PageModel
 
         var json = await response.Content.ReadAsStringAsync();
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-        var country = JsonSerializer.Deserialize<List<CountryApiResponse>>(json, options)?.FirstOrDefault();
+        var country = JsonSerializer.Deserialize<CountryApiResponse>(json, options);
+
+        if (country == null)
+        {
+            return NotFound();
+        }
 
         InfoPais = new Pais
         {
-            OfficialName = country?.name?.official ?? string.Empty,
-            Cca2 = country?.cca2 ?? string.Empty,
-            FlagUrl = country?.flags?.png ?? string.Empty
+            OfficialName = country.name?.official ?? string.Empty,
+            Cca2 = country.cca2 ?? string.Empty,
+            FlagUrl = country.flags?.png ?? string.Empty
         };
 
         return Page();
