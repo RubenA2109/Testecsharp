@@ -21,14 +21,16 @@ public class IndexModel : PageModel
 
 
     public List<Pais> Paises { get; set; } = new();
+    public List<Draggonballmodel> Caracteres { get; set; } = new();
 
     public async Task OnGetAsync()
 
     {
-        //var client = _httpClientFactory.CreateClient();
-        //var response = await client.GetAsync("https://restcountries.com/v3.1/all");
         var client = _httpClientFactory.CreateClient("RestCountries");
+
         var response = await client.GetAsync("https://restcountries.com/v3.1/all?fields=name,capital,currencies,cca2,flags");
+
+        var response1 = await client.GetAsync("https://web.dragonball-api.com/documentation");
 
         if (response.IsSuccessStatusCode)
 
@@ -50,25 +52,5 @@ public class IndexModel : PageModel
         }
 
     }
-
-
-    /*
-
-private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
-
-    {
-        _logger = logger;
-    }
-
-
-    public void OnGet()
-
-    {
-
-    }
-
-*/
 
 }

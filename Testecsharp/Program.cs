@@ -15,6 +15,18 @@ builder.Services.AddHttpClient("RestCountries", c =>
     };
 });
 
+builder.Services.AddHttpClient("dragonball", c =>
+{
+    c.BaseAddress = new Uri("https://dragonball-api.com/api/characters");
+})
+.ConfigurePrimaryHttpMessageHandler(() =>
+{
+    return new HttpClientHandler
+    {
+        SslProtocols = System.Security.Authentication.SslProtocols.Tls12
+    };
+});
+
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -30,4 +42,5 @@ app.UseAuthorization();
 app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
+   
 app.Run();
