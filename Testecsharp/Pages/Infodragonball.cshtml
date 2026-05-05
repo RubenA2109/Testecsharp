@@ -1,0 +1,17 @@
+@page
+@model DragonBallModel
+@{
+    ViewData["Title"] = "Info do País";
+}
+
+@* <h1>@Model.Dragon.name</h1>
+<p><strong>ID:</strong> @Model.Dragon.id</p>
+@if (!string.IsNullOrEmpty(Model.Dragon.FlagUrl))
+{
+    <img src="@Model.Dragon.image" alt="Bandeira de @Model.Dragon.image" style="width:100%;" />
+} *@
+
+else
+{
+    <p>ERRO: não temos lista</p>
+}

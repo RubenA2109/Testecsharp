@@ -21,7 +21,6 @@ public class IndexModel : PageModel
 
 
     public List<Pais> Paises { get; set; } = new();
-    public List<Draggonballmodel> Caracteres { get; set; } = new();
 
     public async Task OnGetAsync()
 

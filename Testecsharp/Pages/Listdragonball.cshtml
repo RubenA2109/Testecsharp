@@ -1,23 +1,16 @@
 @page
-@model IndexModel
+@model DragonBallModel
 @{
+    ViewData["Title"] = "Info do País";
 }
 
-<h1>DragonBall</h1>
-
-@if (Model.Caracteres?.Count > 0)
+@* <h1>@Model.Dragon.name</h1>
+<p><strong>Codigo do Pais:</strong> @Model.Dragon</p>
+@if (!string.IsNullOrEmpty(Model.Dragon.image))
 {
-    <div style="display: flex; flex-wrap: wrap;">
-        @foreach (Models.DragonBallModel dragonball in Model.Caracteres)
-        {
-            <div style="border: 1px solid #ccc; margin: 10px; padding: 10px; width: 200px;">
-                <p>Código: @dragonball.id</p>
-                <p><strong>@dragonball.name</strong></p>
-                <img src="@dragonball.image" />
-            </div>
-        }
-    </div>
-}
+    <img src="@Model.Dragon.image" alt="Bandeira de @Model.Dragon.name" style="width:100%;" />
+} *@
+
 else
 {
     <p>ERRO: não temos lista</p>

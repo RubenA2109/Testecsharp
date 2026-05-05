@@ -9,18 +9,18 @@ using Testecsharp.Models;
 
 namespace Testecsharp.Pages;
 
-public class DragonBallModel : PageModel
+public class DragonBallpersonagem : PageModel
 
 {
     private readonly IHttpClientFactory _httpClientFactory;
-    public DragonBallModel(IHttpClientFactory httpClientFactory)
+    public DragonBallpersonagem(IHttpClientFactory httpClientFactory)
 
     {
         _httpClientFactory = httpClientFactory;
     }
 
 
-    public List<Pais> Dragon { get; set; } = new();
+    public List<DragonBallModel> Dragonball { get; set; } = new();
 
     public async Task OnGetAsync()
 
@@ -40,12 +40,13 @@ public class DragonBallModel : PageModel
 
             if (dados != null)
             {
-                Dragon = dados.Select(d => new Pais
-                {
-                    OfficialName = d.name?.official ?? string.Empty,
-                    Cca2 = d.cca2 ?? string.Empty,
-                    FlagUrl = d.flags?.png ?? string.Empty
-                }).ToList();
+                // Dragonball = dados.Select(d => new DragonBallpersonagem
+                // {
+                //     name = d.name?? string.Empty,
+                //     description = d.description ?? string.Empty,
+                //     image = d.image?? string.Empty
+                //     affliation = d.affliation?? string.Empty
+                // }).ToList();
             }
 
         }

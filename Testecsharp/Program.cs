@@ -15,7 +15,7 @@ builder.Services.AddHttpClient("RestCountries", c =>
     };
 });
 
-builder.Services.AddHttpClient("dragonball", c =>
+builder.Services.AddHttpClient("Dragonball", c =>
 {
     c.BaseAddress = new Uri("https://dragonball-api.com/api/characters");
 })
