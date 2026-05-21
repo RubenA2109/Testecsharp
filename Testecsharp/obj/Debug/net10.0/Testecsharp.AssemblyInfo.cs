@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Testecsharp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+04a09fd1c12c70983b4fa64c201269b5446c9229")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e67f6fb6931a51a3fb369081942cad6044743fe5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Testecsharp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Testecsharp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
